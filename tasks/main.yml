@@ -1,0 +1,18 @@
+- name: Install sudo
+  pacman: name=sudo state=present
+
+- name: "Set up sudo groups in sudoers"
+  template:
+    src: "{{ sudo_sudoers_group_template }}"
+    dest: "/etc/sudoers.d/{{ item }}"
+    owner: root
+    group: root
+  with_items: "{{ sudo_groups }}"
+
+- name: Set up main sudoers file
+  template:
+    src: "{{ sudo_sudoers_template }}"
+    dest: /etc/sudoers
+    owner: root
+    group: root
+    mode: 0440

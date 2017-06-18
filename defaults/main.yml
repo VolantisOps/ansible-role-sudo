@@ -1,0 +1,6 @@
+---
+sudo_groups:
+  - wheel
+sudo_sudoers_template: sudoers.j2
+sudo_sudoers_group_template: sudoers_group.j2
+sudo_nopasswd: false
